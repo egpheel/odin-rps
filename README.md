@@ -1,1 +1,1 @@
-# odin-rps
+# Rock Paper Scissors assignment for The Odin Project
