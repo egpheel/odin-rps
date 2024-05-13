@@ -1,1 +1,3 @@
-# Rock Paper Scissors assignment for The Odin Project
+# Rock Paper Scissors
+
+An assignment for The Odin Project
