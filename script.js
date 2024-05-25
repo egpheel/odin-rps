@@ -2,10 +2,10 @@ const rockBtn = document.querySelector(".rock");
 const paperBtn = document.querySelector(".paper");
 const scissorsBtn = document.querySelector(".scissors");
 const resultsDiv = document.querySelector(".results");
+const scoreParagraph = document.querySelector(".score");
 
 let currentRound = 1;
 let maxRounds = 5;
-let winRoundsCondition = 3;
 
 let humanScore = 0;
 let computerScore = 0;
@@ -118,6 +118,9 @@ function playRound(humanChoice) {
       "\nComputer: " +
       computerScore
   );
+
+  scoreParagraph.textContent =
+    "YOU " + humanScore + " : " + computerScore + " COMPUTER";
 
   currentRound++;
 }
