@@ -1,3 +1,7 @@
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorsBtn = document.querySelector(".scissors");
+
 let currentRound = 1;
 let maxRounds = 5;
 let winRoundsCondition = 3;
@@ -5,36 +9,7 @@ let winRoundsCondition = 3;
 let humanScore = 0;
 let computerScore = 0;
 
-function playGame(rounds) {
-  for (i = 0; i < rounds; i++) {
-    if (
-      humanScore >= winRoundsCondition ||
-      computerScore >= winRoundsCondition
-    ) {
-      break;
-    }
-
-    playRound();
-  }
-
-  console.log("GAME OVER");
-  console.log("YOU: " + humanScore + "\nCOMPUTER: " + computerScore);
-
-  if (humanScore > computerScore) {
-    console.log("Congratulations! You won the game!");
-  } else if (humanScore < computerScore) {
-    console.log("Sorry, you lost this time!");
-  } else {
-    console.log("It's a draw!");
-  }
-}
-
-function playRound() {
-  console.log();
-
-  const humanChoice = getHumanChoice();
-  const computerChoice = getComputerChoice();
-  /* rock: 0
+/* rock: 0
      paper: 1
      scissors: 2
 
@@ -42,6 +17,18 @@ function playRound() {
      1 beats 0
      2 beats 1
   */
+rockBtn.addEventListener("click", () => {
+  playRound(0);
+});
+paperBtn.addEventListener("click", () => {
+  playRound(1);
+});
+scissorsBtn.addEventListener("click", () => {
+  playRound(2);
+});
+
+function playRound(humanChoice) {
+  const computerChoice = getComputerChoice();
 
   console.log(
     "Round " +
@@ -134,25 +121,6 @@ function getComputerChoice() {
   return choice;
 }
 
-function getHumanChoice() {
-  let choice = prompt("Please type rock, paper or scissors:").toLowerCase();
-
-  while (choice !== "rock" && choice !== "paper" && choice !== "scissors") {
-    choice = prompt("Try again! Please type rock, paper or scissors:");
-  }
-
-  switch (choice.toLowerCase()) {
-    case "rock":
-      return 0;
-    case "paper":
-      return 1;
-    case "scissors":
-      return 2;
-    default:
-      return -1;
-  }
-}
-
 function nameifyChoice(choice) {
   switch (choice) {
     case 0:
@@ -169,5 +137,3 @@ function nameifyChoice(choice) {
 function capitalise(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
-
-// playGame(maxRounds);
