@@ -1,6 +1,7 @@
 const rockBtn = document.querySelector(".rock");
 const paperBtn = document.querySelector(".paper");
 const scissorsBtn = document.querySelector(".scissors");
+const resultsDiv = document.querySelector(".results");
 
 let currentRound = 1;
 let maxRounds = 5;
@@ -29,79 +30,85 @@ scissorsBtn.addEventListener("click", () => {
 
 function playRound(humanChoice) {
   const computerChoice = getComputerChoice();
+  const roundInfo = document.createElement("div");
+  const roundResultsParagraph = document.createElement("div");
 
-  console.log(
+  let roundResultText = "";
+
+  roundInfo.style["padding-top"] = "10px";
+  roundInfo.textContent =
     "Round " +
-      currentRound +
-      "!\nYou chose " +
-      nameifyChoice(humanChoice) +
-      "\nComputer chose " +
-      nameifyChoice(computerChoice)
-  );
+    currentRound +
+    "! You chose " +
+    nameifyChoice(humanChoice) +
+    ", Computer chose " +
+    nameifyChoice(computerChoice) +
+    ".";
+
+  resultsDiv.appendChild(roundInfo);
 
   if (humanChoice === computerChoice) {
-    console.log("Draw!");
+    roundResultText = "Draw!";
   } else if (humanChoice === 0 && computerChoice === 2) {
-    console.log(
+    roundResultText =
       "You win! " +
-        capitalise(nameifyChoice(humanChoice)) +
-        " beats " +
-        nameifyChoice(computerChoice) +
-        "!"
-    );
+      capitalise(nameifyChoice(humanChoice)) +
+      " beats " +
+      nameifyChoice(computerChoice) +
+      "!";
 
     humanScore++;
   } else if (humanChoice === 1 && computerChoice === 0) {
-    console.log(
+    roundResultText =
       "You win! " +
-        capitalise(nameifyChoice(humanChoice)) +
-        " beats " +
-        nameifyChoice(computerChoice) +
-        "!"
-    );
+      capitalise(nameifyChoice(humanChoice)) +
+      " beats " +
+      nameifyChoice(computerChoice) +
+      "!";
 
     humanScore++;
   } else if (humanChoice === 2 && computerChoice === 1) {
-    console.log(
+    roundResultText =
       "You win! " +
-        capitalise(nameifyChoice(humanChoice)) +
-        " beats " +
-        nameifyChoice(computerChoice) +
-        "!"
-    );
+      capitalise(nameifyChoice(humanChoice)) +
+      " beats " +
+      nameifyChoice(computerChoice) +
+      "!";
 
     humanScore++;
   } else if (computerChoice === 0 && humanChoice === 2) {
-    console.log(
+    roundResultText =
       "You lose! " +
-        capitalise(nameifyChoice(computerChoice)) +
-        " beats " +
-        nameifyChoice(humanChoice) +
-        "!"
-    );
+      capitalise(nameifyChoice(computerChoice)) +
+      " beats " +
+      nameifyChoice(humanChoice) +
+      "!";
 
     computerScore++;
   } else if (computerChoice === 1 && humanChoice === 0) {
-    console.log(
+    roundResultText =
       "You lose! " +
-        capitalise(nameifyChoice(computerChoice)) +
-        " beats " +
-        nameifyChoice(humanChoice) +
-        "!"
-    );
+      capitalise(nameifyChoice(computerChoice)) +
+      " beats " +
+      nameifyChoice(humanChoice) +
+      "!";
 
     computerScore++;
   } else if (computerChoice === 2 && humanChoice === 1) {
-    console.log(
+    roundResultText =
       "You lose! " +
-        capitalise(nameifyChoice(computerChoice)) +
-        " beats " +
-        nameifyChoice(humanChoice) +
-        "!"
-    );
+      capitalise(nameifyChoice(computerChoice)) +
+      " beats " +
+      nameifyChoice(humanChoice) +
+      "!";
 
     computerScore++;
   }
+
+  roundResultsParagraph.textContent = roundResultText;
+  roundResultsParagraph.style["font-style"] = "italic";
+
+  roundInfo.appendChild(roundResultsParagraph);
 
   console.log(
     "End of round " +
