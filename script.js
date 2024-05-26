@@ -122,6 +122,22 @@ function playRound(humanChoice) {
   scoreParagraph.textContent =
     "YOU " + humanScore + " : " + computerScore + " COMPUTER";
 
+  if (currentRound >= maxRounds) {
+    rockBtn.setAttribute("disabled", "true");
+    paperBtn.setAttribute("disabled", "true");
+    scissorsBtn.setAttribute("disabled", "true");
+
+    if (humanScore > computerScore) {
+      scoreParagraph.textContent += " - YOU WIN!";
+    } else if (humanScore < computerScore) {
+      scoreParagraph.textContent += " - YOU LOSE!";
+    } else {
+      scoreParagraph.textContent += " - IT'S A DRAW!";
+    }
+
+    return;
+  }
+
   currentRound++;
 }
 
